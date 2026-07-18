@@ -111,11 +111,6 @@ src
 
 ## Build & Run
 
-Clone the repository:
-
-```bash
-git clone <repository-url>
-```
 
 Navigate to the project:
 
