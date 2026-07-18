@@ -85,6 +85,39 @@ src
 6. Administrators can monitor requests and analytics through the dashboard.
 
 ---
+## Application Screenshots
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Employee Dashboard
+
+![Employee Dashboard](screenshots/emp_dashboard.png)
+
+### Manager Dashboard
+
+![Manager Dashboard](screenshots/manager_dashboard.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/admin.png)
+
+### Add Users
+
+![Add Users](screenshots/add_users.png)
+
+### All Requests
+
+![All Requests](screenshots/all_requests.png)
+
+### Update Status
+
+![Update Status](screenshots/update_status.png)
+
+### Employee Request Status
+
+![Employee Status](screenshots/emp_status.png)
 
 ## Security
 
