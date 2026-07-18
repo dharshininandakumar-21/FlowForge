@@ -22,3 +22,8 @@ target/
 # OS Files
 .DS_Store
 Thumbs.db
+
+# H2 Database
+data/
+*.mv.db
+*.lock.db
