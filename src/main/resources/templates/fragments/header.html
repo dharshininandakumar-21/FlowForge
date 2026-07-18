@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar(role)" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/dashboard}">FlowForge</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto" th:if="${role == 'EMPLOYEE'}">
+                <li class="nav-item"><a class="nav-link" th:href="@{/employee/dashboard}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/employee/leave/new}">New Leave Request</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/employee/purchase/new}">New Purchase Request</a></li>
+            </ul>
+            <ul class="navbar-nav me-auto" th:if="${role == 'MANAGER'}">
+                <li class="nav-item"><a class="nav-link" th:href="@{/manager/dashboard}">Dashboard</a></li>
+            </ul>
+            <ul class="navbar-nav me-auto" th:if="${role == 'ADMIN'}">
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/dashboard}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/requests}">All Requests</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/users}">Users</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/departments}">Departments</a></li>
+            </ul>
+            <form th:action="@{/logout}" method="post" class="d-flex">
+                <button class="btn btn-outline-light btn-sm" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

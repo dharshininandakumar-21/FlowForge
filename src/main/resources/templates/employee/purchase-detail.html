@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Request Detail - FlowForge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav th:replace="~{fragments/header :: navbar('EMPLOYEE')}"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h4>Purchase Request #<span th:text="${request.id}"></span></h4>
+                    <span class="badge badge-status" th:classappend="'status-' + ${request.status}" th:text="${request.status}"></span>
+                    <hr>
+                    <p><strong>Item:</strong> <span th:text="${request.itemName}"></span></p>
+                    <p><strong>Quantity:</strong> <span th:text="${request.quantity}"></span></p>
+                    <p><strong>Estimated Cost:</strong> <span th:text="${request.estimatedCost}"></span></p>
+                    <p><strong>Justification:</strong> <span th:text="${request.justification}"></span></p>
+                    <p><strong>Manager:</strong> <span th:text="${request.manager != null ? request.manager.name : 'Not Assigned'}"></span></p>
+                    <p th:if="${request.attachmentName != null}"><strong>Attachment:</strong> <span th:text="${request.attachmentName}"></span></p>
+
+                    <form th:if="${request.status.name() == 'SUBMITTED'}" th:action="@{'/employee/purchase/' + ${request.id} + '/cancel'}" method="post">
+                        <button class="btn btn-outline-danger btn-sm" type="submit">Cancel Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5>Workflow Timeline</h5>
+                    <ul class="timeline">
+                        <li th:each="h : ${timeline}">
+                            <div class="small text-muted" th:text="${#temporals.format(h.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></div>
+                            <div th:text="${h.comments}"></div>
+                            <div class="small">By <span th:text="${h.performedBy}"></span> (<span th:text="${h.role}"></span>)</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
